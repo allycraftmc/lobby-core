@@ -11,6 +11,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -75,5 +76,10 @@ public class LobbyGuardListeners implements Listener {
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event) {
         this.buildModeRepository.setBuilderMode(event.getPlayer().getUniqueId(), false);
+    }
+
+    @EventHandler
+    public void onFoodLevelChange(FoodLevelChangeEvent event) {
+        event.setFoodLevel(20);
     }
 }
